@@ -2,7 +2,240 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "npro-user": {
+      "root": "apps/npro/user/",
+      "sourceRoot": "apps/npro/user/src",
+      "projectType": "application",
+      "prefix": "npro",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/npro/user",
+            "index": "apps/npro/user/src/index.html",
+            "main": "apps/npro/user/src/main.ts",
+            "polyfills": "apps/npro/user/src/polyfills.ts",
+            "tsConfig": "apps/npro/user/tsconfig.app.json",
+            "assets": [
+              "apps/npro/user/src/favicon.ico",
+              "apps/npro/user/src/assets"
+            ],
+            "styles": ["apps/npro/user/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/npro/user/src/environments/environment.ts",
+                  "with": "apps/npro/user/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "npro-user:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "npro-user:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "npro-user:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/npro/user/tsconfig.app.json",
+              "apps/npro/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/npro/user/jest.config.js",
+            "tsConfig": "apps/npro/user/tsconfig.spec.json",
+            "setupFile": "apps/npro/user/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "npro-user-e2e": {
+      "root": "apps/npro/user-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/npro/user-e2e/protractor.conf.js",
+            "devServerTarget": "npro-user:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "npro-user:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/npro/user-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "npro-admin": {
+      "root": "apps/npro/admin/",
+      "sourceRoot": "apps/npro/admin/src",
+      "projectType": "application",
+      "prefix": "npro",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/npro/admin",
+            "index": "apps/npro/admin/src/index.html",
+            "main": "apps/npro/admin/src/main.ts",
+            "polyfills": "apps/npro/admin/src/polyfills.ts",
+            "tsConfig": "apps/npro/admin/tsconfig.app.json",
+            "assets": [
+              "apps/npro/admin/src/favicon.ico",
+              "apps/npro/admin/src/assets"
+            ],
+            "styles": ["apps/npro/admin/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/npro/admin/src/environments/environment.ts",
+                  "with": "apps/npro/admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "npro-admin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "npro-admin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "npro-admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/npro/admin/tsconfig.app.json",
+              "apps/npro/admin/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/npro/admin/jest.config.js",
+            "tsConfig": "apps/npro/admin/tsconfig.spec.json",
+            "setupFile": "apps/npro/admin/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "npro-admin-e2e": {
+      "root": "apps/npro/admin-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/npro/admin-e2e/protractor.conf.js",
+            "devServerTarget": "npro-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "npro-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/npro/admin-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -18,5 +251,6 @@
     "@nrwl/schematics:library": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "npro-user"
 }
