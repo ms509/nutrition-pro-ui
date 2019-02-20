@@ -14,9 +14,13 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService } from './_services';
 import { HomeComponent, LoginComponent, RegisterComponent } from './components';
 import { AlertComponent } from './_directives';
+import { HeaderComponent } from './components/shared';
+import { FooterComponent } from './components/shared';
+import { ListRecipesComponent } from './components/recipes';
+import { AddRecipesComponent } from './components/recipes';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AlertComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AlertComponent, HeaderComponent, FooterComponent, ListRecipesComponent, AddRecipesComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

@@ -1,0 +1,14 @@
+
+	  <body class="header">
+  <header>
+    <div class="nav">
+      <ul>
+        <li class="Logout"><a [routerLink]="['/login']">Logout</a></li>
+        <li *ngIf="role=='CHEF'" class="My Recipes"><a [routerLink]="['/my-recipes']">My Recipes</a></li>
+        <li *ngIf="role=='CHEF'" class="Add Recipe"><a [routerLink]="['/recipes/add']">Add Recipe</a></li>
+        <li class="Account"><a [routerLink]="['/my-recipes']">ACCOUNT</a></li>
+        <li class="contact"><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+</body>
